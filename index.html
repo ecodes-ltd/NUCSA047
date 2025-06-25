@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nairobi Universities and Colleges Students Association (NUCSA)</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" type="image/png" href="assets/images/nucsa_logo.png" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta name="description" content="NUCSA: Empowering students for academic, personal, and societal excellence in Nairobi. News, events, leadership, and more." />
+  <meta property="og:title" content="Nairobi Universities and Colleges Students Association (NUCSA)" />
+  <meta property="og:description" content="Empowering students for academic, personal, and societal excellence. Together We Rise." />
+  <meta property="og:image" content="assets/images/nucsa_logo.png" />
+  <meta property="og:type" content="website" />
+  <!-- Google Analytics placeholder -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXXXX-X');
+  </script>
+</head>
+<body>
+  <header class="navbar sticky-navbar">
+    <img src="assets/images/nucsa_logo.png" alt="Nairobi Universities and Colleges Students Association Logo" class="logo" />
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#news">News & Events</a></li>
+        <li><a href="#team">Team/Leadership</a></li>
+        <li><a href="#testimonial">Testimonial</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Nairobi Universities and Colleges Students Association</h1>
+      <p>Empowering students for academic, personal, and societal excellence. Together We Rise.</p>
+      <a href="signup.html" class="cta-button">Join NUCSA Today</a>
+    </div>
+  </section>
+  <style>
+    .hero {
+      background: url('assets/images/g1.jpg') no-repeat center center/cover;
+      height: 100vh;
+      position: relative;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 66, 37, 0.7);
+      z-index: 1;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--nucsa-gold);
+    }
+    .content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      color: #fff;
+    }
+    .cta-button {
+      padding: 12px 30px;
+      background-color: var(--nucsa-gold);
+      color: var(--nucsa-dark-green-text);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      border: 2px solid var(--nucsa-dark-green);
+      font-size: 1.1rem;
+    }
+    .cta-button:hover {
+      background-color: #e85c00;
+      color: #fff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 1000;
+      background: var(--nucsa-gold);
+      color: var(--nucsa-dark-green-text);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      transition: background 0.2s;
+    }
+    #scrollToTopBtn:hover {
+      background: #e85c00;
+      color: #fff;
+    }
+    .nav-links li.active a {
+      color: var(--nucsa-gold);
+      font-weight: bold;
+      border-bottom: 2px solid var(--nucsa-gold);
+    }
+    /* Gallery thumbnails */
+    .gallery-thumbnails {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .gallery-thumb {
+      width: 60px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border 0.2s;
+    }
+    .gallery-thumb.active {
+      border: 2px solid var(--nucsa-gold);
+    }
+    /* Lightbox caption */
+    #lightbox-caption {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-top: 18px;
+      text-align: center;
+      max-width: 90vw;
+      font-weight: bold;
+      text-shadow: 0 2px 8px #000;
+    }
+    /* Tab styles */
+    .tabbed-section { display: none; }
+    .tabbed-section.active { display: block; }
+    .tab-nav {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .tab-nav button {
+      background: var(--nucsa-gold);
+      color: var(--nucsa-dark-green-text);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .tab-nav button.active {
+      background: var(--nucsa-dark-green);
+      color: #fff;
+    }
+    /* News & Events Card Layout */
+    .news-cards-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      min-width: 320px;
+      max-width: 350px;
+      flex: 1 1 320px;
+      margin: 0;
+      position: relative;
+      border: 1.5px solid #eafaf1;
+    }
+    .news-card:hover {
+      box-shadow: 0 8px 32px rgba(0,102,51,0.15);
+      transform: translateY(-6px) scale(1.025);
+      border-color: var(--nucsa-gold);
+    }
+    .news-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: #eafaf1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .news-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .news-card:hover .news-img {
+      transform: scale(1.06);
+    }
+    .news-date-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--nucsa-gold);
+      color: var(--nucsa-dark-green-text);
+      font-weight: bold;
+      padding: 6px 16px;
+      border-radius: 14px;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      letter-spacing: 0.5px;
+    }
+    .news-card-content {
+      padding: 24px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .news-title {
+      font-size: 1.18rem;
+      color: var(--nucsa-dark-green);
+      margin-bottom: 10px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .news-desc {
+      color: #3a4a3a;
+      font-size: 1.04rem;
+      flex: 1;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .news-readmore {
+      color: var(--nucsa-gold);
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.04rem;
+      margin-top: auto;
+      transition: color 0.2s;
+      align-self: flex-start;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 2px;
+    }
+    .news-readmore:hover {
+      color: #e85c00;
+      border-bottom: 1.5px solid #e85c00;
+      text-decoration: none;
+    }
+    @media (max-width: 1100px) {
+      .news-cards-flex { gap: 18px; }
+      .news-card { min-width: 260px; max-width: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .news-cards-flex { flex-direction: column; align-items: center; }
+      .news-card { min-width: 220px; max-width: 420px; width: 100%; }
+    }
+  </style>
+
+  <!-- Hero Gallery Section (Slider) -->
+  <section class="hero-gallery-section" style="background: #eafaf1; padding: 40px 0 20px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align:center; position:relative;">
+      <h2 style="text-align:center; color: var(--nucsa-dark-green); margin-bottom: 24px; font-size:2rem;">NUCSA Moments</h2>
+      <div id="gallery-slider" style="position:relative; display:flex; align-items:center; justify-content:center;">
+        <button id="gallery-prev" style="position:absolute; left:0; top:50%; transform:translateY(-50%); background:var(--nucsa-gold); color:var(--nucsa-dark-green-text); border:none; border-radius:50%; width:48px; height:48px; font-size:2rem; cursor:pointer; z-index:2;">&#8592;</button>
+        <div style="display:flex; align-items:center; justify-content:center; width:auto;">
+          <a id="gallery-link" href="assets/images/g1.jpg">
+            <img id="gallery-img" src="assets/images/g1.jpg" alt="Gallery image 1" style="max-width:90vw; max-height:70vh; width:auto; height:auto; object-fit:contain; border-radius:18px; box-shadow:0 4px 24px rgba(0,102,51,0.18); background:#fff; display:block; margin:0 auto; cursor:pointer;" />
+          </a>
+        </div>
+        <button id="gallery-next" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:var(--nucsa-gold); color:var(--nucsa-dark-green-text); border:none; border-radius:50%; width:48px; height:48px; font-size:2rem; cursor:pointer; z-index:2;">&#8594;</button>
+      </div>
+      <div id="gallery-caption" style="margin-top:14px; font-weight:bold; color:var(--nucsa-dark-green); font-size:1.1rem;"></div>
+      <div class="gallery-thumbnails" id="gallery-thumbnails"></div>
+    </div>
+    <div id="lightbox-modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column;">
+      <span id="lightbox-close" style="position:absolute; top:32px; right:48px; font-size:3rem; color:#fff; cursor:pointer; z-index:10001;">&times;</span>
+      <img id="lightbox-img" src="" alt="Full image" style="max-width:90vw; max-height:70vh; border-radius:18px; box-shadow:0 8px 32px rgba(0,0,0,0.4); background:#fff; display:block; margin:0 auto;" />
+      <div id="lightbox-caption"></div>
+    </div>
+    <script>
+      const galleryImages = [
+        'assets/images/g1.jpg', 'assets/images/g2.jpg', 'assets/images/g3.jpg', 'assets/images/g4.jpg',
+        'assets/images/g5.jpg', 'assets/images/g6.jpg', 'assets/images/g7.jpg', 'assets/images/g8.jpg',
+        'assets/images/g9.jpg', 'assets/images/g10.jpg', 'assets/images/g11.jpg', 'assets/images/g12.jpg',
+        'assets/images/g13.jpg', 'assets/images/g14.jpg', 'assets/images/g15.jpg', 'assets/images/g16.jpg',
+        'assets/images/g17.jpg', 'assets/images/g18.jpg', 'assets/images/g19.jpg', 'assets/images/governance talk.jpg',
+        'assets/images/org sec.jpg', 'assets/images/president.jpg', 'assets/images/summit.jpg', 'assets/images/g20.jpg'
+      ];
+      const galleryCaptions = {
+        'assets/images/org sec.jpg': 'John Nyogesa Organising Secretary NUCSA',
+        'assets/images/president.jpg': 'Kelvin Ndavi, NUCSA President',
+        'assets/images/summit.jpg': 'During leadership summit at Kenya institute of Special Education (KISE)  On 2nd June 2025',
+        'assets/images/governance talk.jpg': 'Youth Leadership and Governance talk on\u00a03rd May 2025',
+        'assets/images/g11.jpg': '16th June 2025\nproductive engagement with CDF Westlands Manager regarding students and youths  support initiatives. We discussed funding opportunities and collaborative programs to make Nairobi Universities and Colleges Students Association\u00a0great\u00a0#047\u270d',
+        'assets/images/g13.jpg': 'Kelvin Ndavi  President NUCSA signing commitment document for Nairobi UniversitiesandCollegesStudentsAssociation.',
+        'assets/images/g14.jpg': 'Team building activities and engagements',
+        'assets/images/g15.jpg': 'Team building activities and engagements',
+        'assets/images/g16.jpg': 'Team building activities and engagements',
+        'assets/images/g17.jpg': 'Team building activities and engagements',
+        'assets/images/g18.jpg': 'Team building activities and engagements',
+        'assets/images/g19.jpg': 'Team building activities and engagements',
+        'assets/images/g10.jpg': 'World elder abuse awareness day\u00a02025 on 17th June 2026',
+      };
+      let galleryCurrent = 0;
+      const galleryImg = document.getElementById('gallery-img');
+      const galleryCaption = document.getElementById('gallery-caption');
+      const galleryLink = document.getElementById('gallery-link');
+      // Lightbox elements
+      const lightboxModal = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      function showGalleryImg(idx) {
+        galleryImg.src = galleryImages[idx];
+        galleryImg.alt = galleryCaptions[galleryImages[idx]] || `Gallery image ${idx+1}`;
+        galleryCaption.textContent = galleryCaptions[galleryImages[idx]] || '';
+        galleryLink.href = galleryImages[idx];
+        // Highlight active thumbnail
+        document.querySelectorAll('.gallery-thumb').forEach((el, i) => {
+          el.classList.toggle('active', i === idx);
+        });
+      }
+      // Thumbnails
+      const galleryThumbnails = document.getElementById('gallery-thumbnails');
+      galleryImages.forEach((src, i) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.alt = galleryCaptions[src] || `Gallery image ${i+1}`;
+        thumb.className = 'gallery-thumb';
+        thumb.loading = 'lazy';
+        thumb.tabIndex = 0;
+        thumb.onclick = () => { galleryCurrent = i; showGalleryImg(i); };
+        thumb.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { galleryCurrent = i; showGalleryImg(i); } };
+        galleryThumbnails.appendChild(thumb);
+      });
+      // Open lightbox on image click
+      galleryImg.onclick = function(e) {
+        e.preventDefault();
+        lightboxImg.src = galleryImages[galleryCurrent];
+        lightboxImg.alt = galleryImg.alt;
+        lightboxCaption.textContent = galleryCaptions[galleryImages[galleryCurrent]] || '';
+        lightboxModal.style.display = 'flex';
+        lightboxClose.focus();
+      };
+      // Close lightbox on close button or outside click
+      lightboxClose.onclick = function() {
+        lightboxModal.style.display = 'none';
+        lightboxImg.src = '';
+      };
+      lightboxModal.onclick = function(e) {
+        if (e.target === lightboxModal) {
+          lightboxModal.style.display = 'none';
+          lightboxImg.src = '';
+        }
+      };
+      // Close lightbox on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightboxModal.style.display === 'flex') {
+          lightboxModal.style.display = 'none';
+          lightboxImg.src = '';
+        }
+      });
+      document.getElementById('gallery-prev').onclick = function() {
+        galleryCurrent = (galleryCurrent - 1 + galleryImages.length) % galleryImages.length;
+        showGalleryImg(galleryCurrent);
+      };
+      document.getElementById('gallery-next').onclick = function() {
+        galleryCurrent = (galleryCurrent + 1) % galleryImages.length;
+        showGalleryImg(galleryCurrent);
+      };
+      // Optional: auto-slide every 6 seconds
+      setInterval(() => {
+        galleryCurrent = (galleryCurrent + 1) % galleryImages.length;
+        showGalleryImg(galleryCurrent);
+      }, 6000);
+      // Show first image
+      showGalleryImg(galleryCurrent);
+
+      // Scroll to top button
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      window.onscroll = function() {
+        // Show/hide scroll to top
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+          scrollToTopBtn.style.display = 'block';
+        } else {
+          scrollToTopBtn.style.display = 'none';
+        }
+        // Highlight nav
+        const sections = ['hero', 'about', 'news', 'team', 'testimonial', 'contact'];
+        let current = '';
+        for (const id of sections) {
+          const el = document.getElementById(id) || document.querySelector(`.${id}`);
+          if (el && window.scrollY + 80 >= el.offsetTop) current = id;
+        }
+        document.querySelectorAll('.nav-links li').forEach(li => {
+          li.classList.remove('active');
+          const a = li.querySelector('a');
+          if (a && a.getAttribute('href').includes(current)) li.classList.add('active');
+        });
+      };
+      scrollToTopBtn.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      // Accessibility: keyboard navigation for lightbox
+      lightboxModal.tabIndex = 0;
+      lightboxModal.onkeydown = function(e) {
+        if (e.key === 'Escape') lightboxModal.style.display = 'none';
+      };
+
+      // Tabbed News & Team
+      const tabNews = document.getElementById('tab-news');
+      const tabTeam = document.getElementById('tab-team');
+      const sectionNews = document.getElementById('news');
+      const sectionTeam = document.getElementById('team');
+      tabNews.onclick = function() {
+        tabNews.classList.add('active');
+        tabTeam.classList.remove('active');
+        sectionNews.classList.add('active');
+        sectionTeam.classList.remove('active');
+        window.location.hash = '#news';
+      };
+      tabTeam.onclick = function() {
+        tabTeam.classList.add('active');
+        tabNews.classList.remove('active');
+        sectionTeam.classList.add('active');
+        sectionNews.classList.remove('active');
+        window.location.hash = '#team';
+      };
+      // Show correct tab on hash change
+      window.addEventListener('hashchange', function() {
+        if (window.location.hash === '#team') tabTeam.onclick();
+        else tabNews.onclick();
+      });
+    </script>
+  </section>
+
+  <section id="about" class="about about-cards enhanced-bg">
+    <div class="about-card fade-in" style="max-width: 800px; margin: 0 auto 32px auto;">
+      <h2>About NUCSA</h2>
+      <p>The Nairobi Universities and Colleges Students Association (NUCSA) is dedicated to improving student life, hosting events, and advocating for student interests across Nairobi's institutions of higher learning.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="icon-circle" aria-hidden="true">&#128161;</div>
+      <h3>Vision</h3>
+      <p><span class="highlight">To be the leading, united, and vibrant voice</span> for university and college students in Nairobi, empowering them to achieve academic, personal, and societal excellence.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="icon-circle" aria-hidden="true">&#128188;</div>
+      <h3>Mission</h3>
+      <p>To represent, advocate for, and serve the <span class="highlight">collective interests</span> of Nairobi university and college students by fostering unity, promoting student welfare, nurturing leadership, and facilitating impactful engagement in academic, social, economic, and civic spheres.</p>
+    </div>
+    <div class="about-card fade-in">
+      <div class="icon-circle" aria-hidden="true">&#127919;</div>
+      <h3>Objectives</h3>
+      <ul class="objectives-list no-bullets animated-objectives">
+        <li class="objective-item"><span class="obj-icon">&#128101;</span> To unite students from all universities and colleges within the Nairobi Metropolitan Area and student residents of Nairobi under a common umbrella body.</li>
+        <li class="objective-item"><span class="obj-icon">&#128218;</span> To promote academic excellence, research, and innovation among students.</li>
+        <li class="objective-item"><span class="obj-icon">&#128081;</span> To foster a culture of leadership, good governance, and civic responsibility among students.</li>
+        <li class="objective-item"><span class="obj-icon">&#127936;</span> To organize and support initiatives in sports, arts, culture, entertainment, climate action, sustainability, economic empowerment, education, skills development, mental health, and awareness.</li>
+        <li class="objective-item"><span class="obj-icon">&#128172;</span> To provide a platform for dialogue, networking, and collaboration among students and with other stakeholders.</li>
+        <li class="objective-item"><span class="obj-icon">&#128153;</span> To promote peace, understanding, and harmonious coexistence among students and the wider community.</li>
+        <li class="objective-item"><span class="obj-icon">&#129309;</span> To engage in community service and outreach programs.</li>
+        <li class="objective-item"><span class="obj-icon">&#128176;</span> To raise and manage funds and resources for the attainment of the organization's objectives in a transparent and accountable manner.</li>
+        <li class="objective-item"><span class="obj-icon">&#9889;</span> To do all such other things as are incidental or conducive to the attainment of the foregoing objectives or any of them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SPA Navigation: News & Events and Team/Leadership are hidden by default -->
+  <section id="news" class="news-section fade-in" style="background:#f4f7fa; padding:48px 0 32px 0; display:none;">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="news-header" style="text-align:center; margin-bottom:38px;">
+        <span class="news-icon" aria-hidden="true" style="font-size:2.5rem; color:var(--nucsa-dark-green); vertical-align:middle; margin-right:10px;">📰</span>
+        <h2 style="color:var(--nucsa-dark-green); display:inline; font-size:2.2rem; vertical-align:middle; letter-spacing:1px;">News & Events</h2>
+        <div class="news-subtitle" style="color:#4a5a4a; font-size:1.13rem; margin-top:10px;">Stay updated with the latest happenings, stories, and events at NUCSA</div>
+      </div>
+      <div class="news-cards-flex">
+        <article class="news-card">
+          <div class="news-img-wrap">
+            <img src="assets/images/governance talk.jpg" alt="Youth Leadership and Governance Talk" class="news-img" loading="lazy" />
+            <span class="news-date-badge">3rd May 2025</span>
+          </div>
+          <div class="news-card-content">
+            <h4 class="news-title">Youth Leadership and Governance Talk</h4>
+            <p class="news-desc">On 3rd May 2025, NUCSA hosted a special talk on youth leadership and governance, featuring guest speakers and interactive sessions. The event empowered students to learn, connect, and grow as future leaders.</p>
+            <a href="#" class="news-readmore">Read more</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-img-wrap">
+            <img src="assets/images/g10.jpg" alt="World Elder Abuse Awareness Day" class="news-img" loading="lazy" />
+            <span class="news-date-badge">17th June 2026</span>
+          </div>
+          <div class="news-card-content">
+            <h4 class="news-title">World Elder Abuse Awareness Day</h4>
+            <p class="news-desc">NUCSA joins the world in raising awareness and supporting the elderly in our communities.</p>
+            <a href="#" class="news-readmore">Read more</a>
+          </div>
+        </article>
+        <article class="news-card">
+          <div class="news-img-wrap">
+            <img src="assets/images/g14.jpg" alt="NUCSA Team Building" class="news-img" loading="lazy" />
+            <span class="news-date-badge">Recent</span>
+          </div>
+          <div class="news-card-content">
+            <h4 class="news-title">NUCSA Team Building</h4>
+            <p class="news-desc">Our recent team building activities fostered unity and collaboration among members. See the gallery for highlights!</p>
+            <a href="#" class="news-readmore">Read more</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="team-section fade-in" style="background:#fff; padding:40px 0 20px 0; display:none;">
+    <div style="max-width:900px; margin:0 auto;">
+      <h2 style="color:var(--nucsa-dark-green); text-align:center; margin-bottom:24px;">Meet Our Leadership</h2>
+      <!-- Leadership Structure Org Chart -->
+      <div class="org-chart-container" aria-label="NUCSA Leadership Structure" style="margin-bottom:40px;">
+        <div class="org-chart" aria-label="NUCSA Leadership Structure" style="margin-bottom:40px;">
+          <div class="org-row org-row-president">
+            <div class="org-node org-president">Kelvin Ndavi<br><span class="org-role">President</span></div>
+          </div>
+          <div class="org-connector org-connector-down"></div>
+          <div class="org-row org-row-deputy">
+            <div class="org-node org-deputy">Deputy President</div>
+          </div>
+          <div class="org-connector org-connector-down"></div>
+          <div class="org-row org-row-main">
+            <div class="org-node org-secretary">Secretary</div>
+            <div class="org-node org-treasurer">Treasurer</div>
+            <div class="org-node org-comm">Communication Director</div>
+            <div class="org-node org-orgsec">Organising Secretary</div>
+          </div>
+          <div class="org-connector org-connector-down"></div>
+          <div class="org-row org-row-assistants">
+            <div class="org-node org-assist-org">Assistant Organising Secretary</div>
+            <div class="org-node org-assist-comm">Assistant Communication Director</div>
+          </div>
+        </div>
+        <style>
+          .org-chart { display: flex; flex-direction: column; align-items: center; font-family: inherit; }
+          .org-row { display: flex; justify-content: center; gap: 32px; margin-bottom: 0; }
+          .org-node {
+            background: #eafaf1;
+            border: 2px solid var(--nucsa-dark-green, #004225);
+            color: var(--nucsa-dark-green, #004225);
+            border-radius: 10px;
+            min-width: 140px;
+            padding: 14px 18px 8px 18px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            position: relative;
+          }
+          .org-role { display: block; font-size: 0.98rem; font-weight: 400; color: #2e4a2e; margin-top: 2px; }
+          .org-president { background: var(--nucsa-gold, #ffd700); color: var(--nucsa-dark-green, #004225); border-color: var(--nucsa-gold, #ffd700); }
+          .org-connector {
+            width: 2px;
+            height: 24px;
+            background: var(--nucsa-dark-green, #004225);
+            margin: 0 auto;
+          }
+          .org-row-main .org-node, .org-row-assistants .org-node { min-width: 160px; }
+          @media (max-width: 900px) {
+            .org-row { flex-wrap: wrap; gap: 12px; }
+            .org-node { min-width: 110px; font-size: 0.98rem; padding: 10px 8px 6px 8px; }
+          }
+          @media (max-width: 600px) {
+            .org-row { flex-direction: column; gap: 8px; }
+            .org-node { min-width: 90px; font-size: 0.93rem; }
+          }
+        </style>
+      </div>
+      <!-- End Org Chart -->
+      <div class="team-list" style="display:flex; flex-wrap:wrap; gap:32px; justify-content:center;">
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <img src="assets/images/president.jpg" alt="Kelvin Ndavi, NUCSA President" style="width:100px; height:100px; object-fit:cover; border-radius:50%; margin-bottom:12px;" loading="lazy" />
+          <h3>Kelvin Ndavi</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">President</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Deputy President" title="Deputy President">&#128100;</span></div>
+          <h3>Deputy President</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Deputy President</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <img src="assets/images/org sec.jpg" alt="John Nyogesa, Organising Secretary" style="width:100px; height:100px; object-fit:cover; border-radius:50%; margin-bottom:12px;" loading="lazy" />
+          <h3>John Nyogesa</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Organising Secretary</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Treasurer" title="Treasurer">&#128181;</span></div>
+          <h3>Treasurer</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Treasurer</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Communication Director" title="Communication Director">&#128172;</span></div>
+          <h3>Communication Director</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Communication Director</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Secretary" title="Secretary">&#128221;</span></div>
+          <h3>Secretary</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Secretary</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Assistant Organising Secretary" title="Assistant Organising Secretary">&#128197;</span></div>
+          <h3>Assistant Organising Secretary</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Assistant Organising Secretary</p>
+        </div>
+        <div class="team-card" style="background:#f4f8f6; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:24px; max-width:260px; text-align:center;">
+          <div style="width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:#eafaf1; border-radius:50%; margin:0 auto 12px auto; font-size:2.8rem; color:var(--nucsa-dark-green);"><span aria-label="Assistant Communication Director" title="Assistant Communication Director">&#128241;</span></div>
+          <h3>Assistant Communication Director</h3>
+          <p style="font-weight:bold; color:var(--nucsa-dark-green);">Assistant Communication Director</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonial" class="testimonial-section fade-in">
+    <div class="testimonial-card">
+      <img src="assets/images/president.jpg" alt="NUCSA President" class="testimonial-img" loading="lazy" />
+      <blockquote>“NUCSA has given me a platform to grow, connect, and make a real difference. Together, we truly rise!”</blockquote>
+      <div class="testimonial-author">— Kelvin, NUCSA President</div>
+    </div>
+    <div class="testimonial-card">
+      <img src="assets/images/org sec.jpg" alt="John Nyogesa, Organising Secretary" class="testimonial-img" loading="lazy" />
+      <blockquote>“The unity and support at NUCSA is unmatched. Proud to be part of this vibrant community.”</blockquote>
+      <div class="testimonial-author">— John Nyogesa, Organising Secretary</div>
+    </div>
+    <div class="testimonial-card">
+      <img src="assets/images/g14.jpg" alt="Team Building" class="testimonial-img" loading="lazy" />
+      <blockquote>“The team building activities helped me make new friends and learn valuable leadership skills.”</blockquote>
+      <div class="testimonial-author">— Student Member</div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section fade-in">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-slogan">Together We Rise</div>
+    <div class="footer-social">
+      <a href="https://tiktok.com/@nucsa.ke" aria-label="TikTok" class="footer-icon" style="vertical-align: middle;">
+        <i class="fa-brands fa-tiktok"></i> @nucsa.ke
+      </a>
+      <a href="https://x.com/nucsa.ke" aria-label="X (Twitter)" class="footer-icon">&#120143; @nucsa.ke</a>
+      <a href="mailto:nairobistudentsassociation@gmail.com" aria-label="Email" class="footer-icon">&#x2709; nairobistudentsassociation@gmail.com</a>
+      <span class="footer-icon" aria-label="Phone">&#x1F4DE; 0112428539</span>
+    </div>
+    <p class="footer-copyright">&copy; 2025 Nairobi Universities and Colleges Students Association (NUCSA). All rights reserved.</p>
+  </footer>
+  <button id="scrollToTopBtn" title="Back to top">&#8679;</button>
+
+  <script>
+    // ...existing gallery and scroll code...
+
+    // SPA-style navigation
+    const sections = {
+      home: [
+        document.querySelector('.hero'),
+        document.querySelector('.hero-gallery-section'),
+        document.getElementById('about'),
+        document.getElementById('testimonial'),
+        document.getElementById('contact')
+      ],
+      news: [document.getElementById('news')],
+      team: [document.getElementById('team')]
+    };
+    function showSection(section) {
+      // Hide all
+      Object.values(sections).flat().forEach(sec => { if(sec) sec.style.display = 'none'; });
+      // Show selected
+      if (sections[section]) sections[section].forEach(sec => { if(sec) sec.style.display = ''; });
+      // Highlight nav
+      document.querySelectorAll('.nav-links li').forEach(li => {
+        li.classList.remove('active');
+        const a = li.querySelector('a');
+        if (!a) return;
+        if ((section === 'home' && a.getAttribute('href') === 'index.html') ||
+            (section === 'news' && a.getAttribute('href').includes('#news')) ||
+            (section === 'team' && a.getAttribute('href').includes('#team'))) {
+          li.classList.add('active');
+        }
+      });
+    }
+    function handleNav(e) {
+      if (!e.target.closest('a')) return;
+      const href = e.target.closest('a').getAttribute('href');
+      if (href === 'index.html' || href === './' || href === '/') {
+        e.preventDefault();
+        history.pushState(null, '', 'index.html');
+        showSection('home');
+      } else if (href.includes('#news')) {
+        e.preventDefault();
+        history.pushState(null, '', '#news');
+        showSection('news');
+      } else if (href.includes('#team')) {
+        e.preventDefault();
+        history.pushState(null, '', '#team');
+        showSection('team');
+      }
+      // Let other links (login, signup, etc) work normally
+    }
+    document.querySelector('.nav-links').addEventListener('click', handleNav);
+    window.addEventListener('popstate', function() {
+      if (location.hash === '#news') showSection('news');
+      else if (location.hash === '#team') showSection('team');
+      else showSection('home');
+    });
+    // On page load
+    if (location.hash === '#news') showSection('news');
+    else if (location.hash === '#team') showSection('team');
+    else showSection('home');
+  </script>
+</body>
+</html>
