@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nairobi Universities and Colleges Students Association (NUCSA)</title>
+  
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" type="image/png" href="assets/images/nucsa_logo.png" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -22,6 +23,49 @@
   </script>
 </head>
 <body>
+    <div id="preloader" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#fff;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <svg width="90" height="90" viewBox="0 0 90 90" style="margin-bottom:18px;" aria-hidden="true">
+        <circle cx="45" cy="45" r="36" stroke="#eafaf1" stroke-width="8" fill="none"/>
+        <circle id="preloader-progress" cx="45" cy="45" r="36" stroke="gold" stroke-width="8" fill="none" stroke-linecap="round"
+          stroke-dasharray="226.1946710584651" stroke-dashoffset="226.1946710584651" style="transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 0.2s;"/>
+        <image href="assets/images/nucsa_logo.png" x="20" y="20" height="50" width="50" style="pointer-events:none;opacity:0.95;"/>
+      </svg>
+      <div style="font-size:1.3rem;color:var(--nucsa-dark-green,#004225);font-weight:bold;">Loading NUCSA Website...</div>
+    </div>
+    <style>
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      #preloader { transition: opacity 0.5s; }
+      #preloader svg { display:block; }
+      #preloader-progress { transition: stroke-dashoffset 0.2s; }
+    </style>
+    <script>
+      document.body.style.overflow = 'hidden';
+      // SVG progress bar animation
+      var progressCircle = document.getElementById('preloader-progress');
+      var totalLength = 2 * Math.PI * 36; // r=36
+      var duration = 8000;
+      var start = Date.now();
+      function animatePreloader() {
+        var now = Date.now();
+        var elapsed = now - start;
+        var percent = Math.min(elapsed / duration, 1);
+        if (progressCircle) {
+          progressCircle.setAttribute('stroke-dashoffset', totalLength * (1 - percent));
+        }
+        if (percent < 1) requestAnimationFrame(animatePreloader);
+      }
+      animatePreloader();
+      setTimeout(function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          setTimeout(function() {
+            preloader.style.display = 'none';
+            document.body.style.overflow = '';
+          }, 500);
+        }
+      }, duration);
+    </script>
   <header class="navbar sticky-navbar">
     <img src="assets/images/nucsa_logo.png" alt="Nairobi Universities and Colleges Students Association Logo" class="logo" />
     <nav>
@@ -42,6 +86,7 @@
     <div class="overlay"></div>
     <div class="content">
       <h1>Nairobi Universities and Colleges Students Association</h1>
+      <div style="font-size:1.3rem; color:var(--nucsa-gold,#ffd700); font-weight:bold; margin-bottom:10px;">(Nairobi Branch_047)</div>
       <p>Empowering students for academic, personal, and societal excellence. Together We Rise.</p>
       <a href="signup.html" class="cta-button">Join NUCSA Today</a>
     </div>
